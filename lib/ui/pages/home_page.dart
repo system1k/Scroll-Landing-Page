@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vertical_landing_page/ui/views/views.dart';
 import 'package:vertical_landing_page/ui/shared/shared.dart';
+import 'package:vertical_landing_page/providers/page_provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -46,7 +48,11 @@ class _HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final pageController = Provider.of<PageProvider>(context, listen: false);
+
     return PageView(
+      controller: pageController.scrollController,
       scrollDirection: Axis.vertical,
       children: const [
 

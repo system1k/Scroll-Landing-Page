@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:vertical_landing_page/ui/shared/shared.dart';
+import 'package:vertical_landing_page/providers/page_provider.dart';
 
 class CustomAppMenu extends StatefulWidget {
   const CustomAppMenu({Key? key}) : super(key: key);
@@ -26,6 +28,9 @@ class _CustomAppMenuState extends State<CustomAppMenu> with SingleTickerProvider
 
   @override
   Widget build(BuildContext context) {
+
+    final pageController = Provider.of<PageProvider>(context, listen: false);
+    
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
@@ -49,11 +54,11 @@ class _CustomAppMenuState extends State<CustomAppMenu> with SingleTickerProvider
 
               if(isOpen)
                 ... [
-                  CustomAppItem(text: 'Home', onPressed: (){}),
-                  CustomAppItem(delay: 30, text: 'About', onPressed: (){}),
-                  CustomAppItem(delay: 60, text: 'Pricing', onPressed: (){}),
-                  CustomAppItem(delay: 90, text: 'Contact', onPressed: (){}),
-                  CustomAppItem(delay: 120, text: 'Location', onPressed: (){}),
+                  CustomAppItem(text: 'Home', onPressed: ()=> pageController.goTo(0) ),
+                  CustomAppItem(delay: 30, text: 'About', onPressed: ()=> pageController.goTo(1) ),
+                  CustomAppItem(delay: 60, text: 'Pricing', onPressed: ()=> pageController.goTo(2) ),
+                  CustomAppItem(delay: 90, text: 'Contact', onPressed: ()=> pageController.goTo(3) ),
+                  CustomAppItem(delay: 120, text: 'Location', onPressed: ()=> pageController.goTo(4) ),
                   const SizedBox(height: 10)
                 ]
             ],
